@@ -1,5 +1,5 @@
 {
-  "id": "./",
+  "id": "/sylab/",
   "name": "Slabikovač",
   "short_name": "Slabikovač",
   "description": "Rozdělí český text na slabiky a připojí neslabičné předložky k následujícímu slovu.",
