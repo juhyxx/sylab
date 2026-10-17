@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slabikovač</title>
+    <meta name="description" content="Rozdělí český text na slabiky a připojí neslabičné předložky k následujícímu slovu." />
+    <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg" />
+    <link rel="icon" type="image/png" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img class="logo" src="icons/logo.svg" width="56" height="56" alt="" />
+      <div>
+        <h1>Slabikovač</h1>
+        <p class="lead">Rozdělí český text na slabiky. Neslabičné předložky k, s, v, z připojí k následujícímu slovu znakem +.</p>
+      </div>
+    </header>
+
+    <main class="panes">
+      <section class="pane">
+        <div class="pane-head">
+          <label for="input">Text</label>
+          <button type="button" id="clear" class="btn-ghost">Vymazat</button>
+        </div>
+        <textarea id="input" spellcheck="false" placeholder="Napište nebo vložte český text…"></textarea>
+      </section>
+
+      <section class="pane">
+        <div class="pane-head">
+          <span id="output-label">Slabiky</span>
+          <button type="button" id="copy" class="btn">Kopírovat</button>
+        </div>
+        <div id="output" class="output" role="status" aria-live="polite" aria-labelledby="output-label"></div>
+      </section>
+    </main>
+
+    <footer class="options">
+      <label class="check">
+        <input type="checkbox" id="join-vowels" />
+        Připojovat i jednopísmenná slova o, u, a, i
+      </label>
+    </footer>
+
+    <script src="syllabify.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

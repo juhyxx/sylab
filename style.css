@@ -1,0 +1,193 @@
+:root {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --text: #1f1d1a;
+  --muted: #6b665e;
+  --border: #e3ddd2;
+  --accent: #f8bd35;
+  --accent-ink: #1f1d1a;
+  --separator: #b27b00;
+  --joiner: #c2410c;
+  --focus: #f8bd3599;
+  --radius: 10px;
+  --text-size: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161513;
+    --surface: #1f1e1b;
+    --text: #ece8e1;
+    --muted: #9c968c;
+    --border: #36332e;
+    --separator: #f8bd35;
+    --joiner: #fb923c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  flex: none;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.lead {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.panes {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.pane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+
+#input,
+.output {
+  flex: 1;
+  min-height: 240px;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: var(--text-size);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: auto;
+}
+
+#input {
+  resize: none;
+  outline: none;
+}
+
+.pane:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--focus);
+}
+
+.word {
+  white-space: nowrap;
+}
+
+.output:empty::before {
+  content: "Tady se objeví text rozdělený na slabiky.";
+  color: var(--muted);
+}
+
+.separator {
+  color: var(--separator);
+  font-weight: 700;
+}
+
+.joiner {
+  color: var(--joiner);
+  font-weight: 700;
+}
+
+button {
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.options {
+  color: var(--muted);
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.check input {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 16px;
+  }
+
+  .panes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
