@@ -2,7 +2,22 @@
   'use strict';
 
   const STORAGE_KEY = 'sylab.state';
-  const SAMPLE = 'Šel jsem s dědečkem v neděli k řece.\nZ mostu jsme viděli v dálce Vltavu a krásnou zahradu.';
+  // Opening of Vítězslav Nezval's Edison (1928).
+  const SAMPLE = [
+    'Naše životy jsou truchlivé jak pláč',
+    'Jednou kvečeru šel z herny mladý hráč',
+    'venku sněžilo nad monstrancemi barů',
+    'vzduch byl vlhký neboť chýlilo se k jaru',
+    'avšak noc se chvěla jako prérie',
+    'pod údery hvězdné artilerie',
+    'které naslouchali u politických stolů',
+    'pijáci nad sklenicemi alkoholů',
+    'polonahé ženy v šatě z pavích per',
+    'melancholikové jako vpodvečer',
+    '',
+    'Bylo tu však něco těžkého co drtí',
+    'smutek stesk a úzkost z života i smrti',
+  ].join('\n');
 
   const input = document.getElementById('input');
   const output = document.getElementById('output');

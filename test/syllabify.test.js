@@ -76,6 +76,12 @@ const cases = [
   ['vitamín v', 'vi-ta-mín v'],
   ['s. r. o.', 's. r. o.'],
   ['ve městě', 've měs-tě'],
+  // repeated spaces
+  ['pes  a   kočka', 'pes a koč-ka'],
+  ['v   domě', 'v+do-mě'],
+  ['pes\t\tkočka', 'pes koč-ka'],
+  ['pes  \n\n  kočka', 'pes \n\n koč-ka'],
+  ['pes kočka', 'pes koč-ka'],
 ];
 
 const optionCases = [

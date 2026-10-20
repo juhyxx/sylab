@@ -11,6 +11,7 @@
   --focus: #f8bd3599;
   --radius: 10px;
   --text-size: 1.25rem;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -103,6 +104,7 @@ body {
   background: transparent;
   color: inherit;
   font: inherit;
+  font-family: var(--mono);
   font-size: var(--text-size);
   line-height: 1.7;
   white-space: pre-wrap;

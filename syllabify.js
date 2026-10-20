@@ -10,6 +10,7 @@
  *    or the last two when they form stop + liquid (do-brý, ses-tra, ře-kla)
  *    or, in clusters of three or more, sibilant + stop (lid-ský, ďá-bel-ské)
  *  - non-syllabic prepositions k, s, v, z are joined to the following word (v+do-mě)
+ *  - repeated spaces within a line collapse to one; line breaks are kept
  *
  * Works as a classic <script> (exposes window.Sylab) and as a CommonJS module.
  */
@@ -28,6 +29,9 @@
 
   const NON_SYLLABIC_PREPOSITIONS = ['k', 's', 'v', 'z'];
   const SINGLE_LETTER_VOWEL_WORDS = ['o', 'u', 'a', 'i'];
+
+  // Two or more whitespace characters other than line breaks.
+  const REPEATED_SPACES = /[^\S\r\n]{2,}/g;
 
   // Prefix + "u" that must not merge into a diphthong (po-u-žít, na-u-čit, ne-u-mím).
   const OU_HIATUS = /^(po|do|pro)u[žčk]/;
@@ -185,7 +189,9 @@
         prev.type === 'word' &&
         isJoinable(prev.text, options) &&
         canFollowPreposition(tokens[i + 1]);
-      parts.push(joins ? { text: options.joiner, kind: 'joiner' } : { text: token.text, kind: 'text' });
+      parts.push(
+        joins ? { text: options.joiner, kind: 'joiner' } : { text: token.text.replace(REPEATED_SPACES, ' '), kind: 'text' }
+      );
     });
 
     return parts;
